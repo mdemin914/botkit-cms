@@ -1,18 +1,18 @@
 module.exports = function(api, controller) {
 
     // evaluate incoming data
-    controller.studio.evaluateTrigger = function(bot, text, user) {
+    controller.plugins.cms.evaluateTrigger = function(text) {
         return api.evaluateTriggers(text);
     };
 
     // get command list
-    controller.studio.getScripts = function(bot, tag) {
+    controller.plugins.cms.getScripts = function(bot, tag) {
         return api.getScripts(tag);
     };
 
     // create a simple script
     // with a single trigger and single reply
-    controller.studio.createScript = function(bot, trigger, text) {
+    controller.plugins.cms.createScript = function(bot, trigger, text) {
         return new Promise(function(resolve, reject) {
             // TODO: Wtf does this do?
             // noop
@@ -21,17 +21,17 @@ module.exports = function(api, controller) {
     };
 
     // load a script from the pro service
-    controller.studio.getScriptById = function(bot, id, user) {
+    controller.plugins.cms.getScriptById = function(bot, id, user) {
         return api.getScript(id);
     };
 
     // load a script from the pro service
-    controller.studio.getScript = function(bot, text, user) {
+    controller.plugins.cms.getScript = function(bot, text, user) {
         return api.getScript(text);
     };
 
     // get Botkit Studio identity
-    controller.studio.identify = function() {
+    controller.plugins.cms.identify = function() {
         return new Promise(function(resolve, reject) {
             resolve({
                 name: process.env.BOT_NAME || 'Botkit Bot',
